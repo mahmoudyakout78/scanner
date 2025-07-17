@@ -1,0 +1,1 @@
+C:\Users\Yakout\Downloads\flutter_barcode_sdk-main\example\build\app\intermediates\cxx\Debug\3c3w1393\obj\arm64-v8a

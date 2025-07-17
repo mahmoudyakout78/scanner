@@ -1,0 +1,48 @@
+PODS:
+  - DCV (1.0.0)
+  - file_selector_macos (0.0.1):
+    - FlutterMacOS
+  - flutter_barcode_sdk (3.0.0):
+    - DCV
+    - FlutterMacOS
+  - flutter_lite_camera (0.0.1):
+    - FlutterMacOS
+  - FlutterMacOS (1.0.0)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - file_selector_macos (from `Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos`)
+  - flutter_barcode_sdk (from `Flutter/ephemeral/.symlinks/plugins/flutter_barcode_sdk/macos`)
+  - flutter_lite_camera (from `Flutter/ephemeral/.symlinks/plugins/flutter_lite_camera/macos`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
+
+SPEC REPOS:
+  trunk:
+    - DCV
+
+EXTERNAL SOURCES:
+  file_selector_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos
+  flutter_barcode_sdk:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_barcode_sdk/macos
+  flutter_lite_camera:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_lite_camera/macos
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  path_provider_foundation:
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
+
+SPEC CHECKSUMS:
+  DCV: a0ff457169fe0e30a36bec2f359ccd3a18480be1
+  file_selector_macos: 6280b52b459ae6c590af5d78fc35c7267a3c4b31
+  flutter_barcode_sdk: c6339a9fa2e0b3696655671af342299de3ac4382
+  flutter_lite_camera: 0a91cbcebca420a0e62955fbcdd7d030cc5da322
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
+
+PODFILE CHECKSUM: 353c8bcc5d5b0994e508d035b5431cfe18c1dea7
+
+COCOAPODS: 1.16.2
