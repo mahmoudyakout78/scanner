@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "users": {
+      ".read": true,
+      ".write": true
+    },
+    "selections": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": ["userId"]
+    }
+  }
+}

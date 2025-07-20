@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -6,10 +7,16 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_barcode_sdk_example/desktop.dart';
+import 'package:flutter_barcode_sdk_example/firebase_options.dart';
 import 'package:flutter_barcode_sdk_example/mobile.dart';
 import 'package:flutter_barcode_sdk_example/web.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   StatefulWidget app;
   if (kIsWeb) {
     app = Web();
@@ -34,10 +41,13 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      
-      title: 'Dynamsoft Barcode Reader',
       home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        appBar: AppBar(
+          title: const Text(
+            'Barcode Reader',style: TextStyle(color: Colors.white)),
+          backgroundColor: const Color.fromARGB(236, 0, 0, 0),
+        ),
+        backgroundColor: Color.fromARGB(237, 255, 255, 255),
         body: app,
       ),
     ),

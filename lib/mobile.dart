@@ -6,6 +6,7 @@ import 'dart:ui' as ui;
 import 'package:camera/camera.dart';
 import 'package:flutter_barcode_sdk/dynamsoft_barcode.dart';
 import 'package:flutter_barcode_sdk/flutter_barcode_sdk.dart';
+import 'package:flutter_barcode_sdk_example/home_screen.dart';
 import 'package:flutter_barcode_sdk_example/utils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'license.dart';
@@ -232,7 +233,8 @@ class MobileState extends State<Mobile> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
+    return Stack(
+      children: [
       SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height -
@@ -266,14 +268,7 @@ class MobileState extends State<Mobile> with WidgetsBindingObserver {
                       ? Container(
                           color: Color.fromARGB(26, 0, 0, 0),
                           child: const Center(
-                            child: Text(
-                              'No barcode detected',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            
                           ))
                       : createOverlay(_results),
                 ),
@@ -290,28 +285,54 @@ class MobileState extends State<Mobile> with WidgetsBindingObserver {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  MaterialButton(
-                      child: _buttonText,
-                      color: const Color.fromARGB(255, 14, 14, 14),
-                      onPressed: () async {
-                        try {
-                          // Ensure that the camera is initialized.
-                          await _initializeControllerFuture;
-
-                          videoScan();
-                          // pictureScan();
-                        } catch (e) {
-                          // If an error occurs, log the error to the console.
-                          print(e);
-                        }
-                      }),
-                      MaterialButton(
-                      child: Icon(Icons.camera_alt,color: Colors.white,),
-                      color: const Color.fromARGB(255, 0, 0, 0),
+                  CircleAvatar(
+                    backgroundColor: const Color.fromARGB(255, 5, 5, 5),
+                    radius: 30,
+                    child: MaterialButton(
+                        child: _buttonText,
                         
-                      onPressed: () async {
-                        pictureScan();
-                      })
+                        onPressed: () async {
+                          try {
+                            // Ensure that the camera is initialized.
+                            await _initializeControllerFuture;
+                    
+                            videoScan();
+                            // pictureScan();
+                          } catch (e) {
+                            // If an error occurs, log the error to the console.
+                            print(e);
+                          }
+                        }),
+                  ),
+                      CircleAvatar(
+                        backgroundColor: const Color.fromARGB(255, 5, 5, 5),
+                        radius: 30,
+                        child: MaterialButton(
+                          
+                        child: Icon(Icons.upload_file, color: Colors.white,),
+                        
+                          
+                        onPressed: () async {
+                          pictureScan();
+                        }),
+                      ),
+                      MaterialButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                          
+                        child: Text("Register now", style: TextStyle(color: Colors.white),),
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                          
+                        onPressed: () async {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const HomeScreen()),
+                        );
+                        }
+                        
+                        ),
+                      
                 ]),
           ),
         ],
@@ -375,14 +396,7 @@ class DisplayPictureScreen extends StatelessWidget {
                                 ? Container(
                                     color: Color.fromARGB(26, 0, 0, 0),
                                     child: const Center(
-                                      child: Text(
-                                        'No barcode detected',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
+                                      
                                     ))
                                 : createOverlay(barcodeResults),
                           ),

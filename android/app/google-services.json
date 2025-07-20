@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "34173947519",
+    "firebase_url": "https://userselectionapp-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "userselectionapp",
+    "storage_bucket": "userselectionapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34173947519:android:3a5c92c3fd9355333cb94a",
+        "android_client_info": {
+          "package_name": "com.dynamsoft.flutter_barcode_sdk_example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBkA688rCv5v2He0hpdPAB1tymsSuI4Mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
