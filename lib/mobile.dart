@@ -240,7 +240,7 @@ class MobileState extends State<Mobile> with WidgetsBindingObserver {
           height: MediaQuery.of(context).size.height -
               MediaQuery.of(context).padding.top,
           child: FittedBox(
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
             child: Stack(
               children: [
                 _controller == null
@@ -283,10 +283,12 @@ class MobileState extends State<Mobile> with WidgetsBindingObserver {
           Container(
             height: 100,
             child: Row(
+                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundColor: const Color.fromARGB(255, 5, 5, 5),
+                    backgroundColor:const Color.fromARGB(255, 16, 77, 6),
                     radius: 30,
                     child: MaterialButton(
                         child: _buttonText,
@@ -305,7 +307,7 @@ class MobileState extends State<Mobile> with WidgetsBindingObserver {
                         }),
                   ),
                       CircleAvatar(
-                        backgroundColor: const Color.fromARGB(255, 5, 5, 5),
+                        backgroundColor: const Color.fromARGB(255, 16, 77, 6),
                         radius: 30,
                         child: MaterialButton(
                           
@@ -316,22 +318,7 @@ class MobileState extends State<Mobile> with WidgetsBindingObserver {
                           pictureScan();
                         }),
                       ),
-                      MaterialButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                          
-                        child: Text("Register now", style: TextStyle(color: Colors.white),),
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                          
-                        onPressed: () async {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const HomeScreen()),
-                        );
-                        }
-                        
-                        ),
+                    
                       
                 ]),
           ),
