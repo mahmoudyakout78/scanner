@@ -1,3 +1,4 @@
+import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -8,6 +9,7 @@ import 'package:flutter_barcode_sdk/dynamsoft_barcode.dart';
 import 'package:flutter_barcode_sdk/flutter_barcode_sdk.dart';
 import 'package:flutter_barcode_sdk_example/phone_number.dart';
 import 'package:flutter_barcode_sdk_example/utils.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'license.dart';
 import 'overlay_painter.dart';
@@ -71,7 +73,7 @@ class MobileState extends State<Mobile> with WidgetsBindingObserver {
   void pictureScan() async {
     try {
       final ImagePicker picker = ImagePicker();
-      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+      final XFile? image = await picker.pickImage(source: ImageSource.camera);
       if (image != null) {
         List<BarcodeResult> results =
             await _barcodeReader!.decodeFile(image.path);
@@ -286,41 +288,52 @@ class MobileState extends State<Mobile> with WidgetsBindingObserver {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 
-                children: <Widget>[
-                  CircleAvatar(
-                    backgroundColor:const Color.fromARGB(255, 16, 77, 6),
-                    radius: 30,
-                    child: MaterialButton(
-                        child: _buttonText,
-                        
-                        onPressed: () async {
-                          try {
-                            // Ensure that the camera is initialized.
-                            await _initializeControllerFuture;
-                    
-                            videoScan();
-                            // pictureScan();
-                          } catch (e) {
-                            // If an error occurs, log the error to the console.
-                            print(e);
-                          }
-                        }),
+                children: [
+
+                  CustomSlidingSegmentedControl(
+                    initialValue: 1,
+                    onValueChanged: (index) async {
+                      try {
+                        await _initializeControllerFuture;
+
+                        if (index == 1) {
+                          stopVideo();
+                          return;
+                        }
+
+                        _isScanRunning ? stopVideo() : startVideo();
+                      } catch (e) {
+                        print('Error: $e');
+                      }
+                    },
+                    children: {
+                      1: SvgPicture.asset('images/people.svg',
+                          color: Colors.grey, height: 15),
+                      2: SvgPicture.asset('images/scan.svg',
+                          color: Colors.grey, height: 15)
+                    },
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100.0),
+                      color: Colors.black,
+                    ),
+                    thumbDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100.0),
+                      color: Colors.white,
+                    ),
                   ),
-                      CircleAvatar(
-                        backgroundColor: const Color.fromARGB(255, 16, 77, 6),
-                        radius: 30,
-                        child: MaterialButton(
-                          
-                        child: Icon(Icons.upload_file, color: Colors.white,),
-                        
-                          
-                        onPressed: () async {
-                          pictureScan();
-                        }),
-                      ),
-                    
-                      
-                ]),
+                  InkWell(
+                    onTap: () {
+                      pictureScan();
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 25,
+                      child: SvgPicture.asset('images/add.svg',
+                          color: Colors.white, height: 15),
+                    ),
+                  ),
+                ])
+      
           ),
         ],
       )

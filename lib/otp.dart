@@ -76,7 +76,7 @@ class _OtpPageState extends State<OtpPage> {
               keyboardType: TextInputType.number,
               maxLength: 6,
               textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(fontSize: 28, letterSpacing: 6, color: Colors.black),
+              style: GoogleFonts.poppins(fontSize: 28, letterSpacing: 6),
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 counterText: '',

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -56,25 +57,11 @@ Future<void> main() async {
                 ],
               ),
               backgroundColor:const Color.fromARGB(255, 16, 77, 6),
-              actions: [
-                IconButton(
-                  icon: const Icon(Icons.person_add,
-                      color: Colors.white),
-                  tooltip: 'Register',
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const PhoneNumberPage(),
-                      ),
-                    );
-                  },
-                ),
-              ],
+              
             ),
             
             backgroundColor: const Color.fromARGB(255, 189, 189, 189),
-            body: app,
+            body: FirebaseAuth.instance.currentUser == null ? PhoneNumberPage() : app,
           );
         },
       ),
