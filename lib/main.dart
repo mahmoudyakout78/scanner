@@ -8,7 +8,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_barcode_sdk_example/desktop.dart';
 import 'package:flutter_barcode_sdk_example/firebase_options.dart';
-import 'package:flutter_barcode_sdk_example/home_screen.dart';
+import 'package:flutter_barcode_sdk_example/phone_number.dart';
 import 'package:flutter_barcode_sdk_example/mobile.dart';
 import 'package:flutter_barcode_sdk_example/web.dart';
 
@@ -65,7 +65,7 @@ Future<void> main() async {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Homescreen(),
+                        builder: (context) => const PhoneNumberPage(),
                       ),
                     );
                   },
